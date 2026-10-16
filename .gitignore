@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# LaTeX build output (the .tex and the compiled .pdf are kept)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Over GitHub's 100 MB file limit (116 MB). Regenerate it with the pendulum scripts in randomness/.
+randomness/double_pendulum_trails.gif

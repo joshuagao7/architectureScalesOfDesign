@@ -1,0 +1,222 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=0.4in]{geometry}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+\setlength{\jot}{0pt}
+\linespread{0.9}
+
+\begin{document}
+\tiny
+
+\begin{align*}
+x_1 &= L_1 \sin\theta_1 \\
+y_1 &= L_1 \cos\theta_1 \\
+x_2 &= L_1 \sin\theta_1 + L_2 \sin\theta_2 \\
+y_2 &= L_1 \cos\theta_1 + L_2 \cos\theta_2
+\end{align*}
+
+\begin{align*}
+\dot{x}_1 &= L_1 \dot{\theta}_1 \cos\theta_1 \\
+\dot{y}_1 &= -L_1 \dot{\theta}_1 \sin\theta_1 \\
+\dot{x}_2 &= L_1 \dot{\theta}_1 \cos\theta_1 + L_2 \dot{\theta}_2 \cos\theta_2 \\
+\dot{y}_2 &= -L_1 \dot{\theta}_1 \sin\theta_1 - L_2 \dot{\theta}_2 \sin\theta_2
+\end{align*}
+
+\begin{align*}
+v_1^2 &= \dot{x}_1^2 + \dot{y}_1^2 \\
+&= L_1^2 \dot{\theta}_1^2 \cos^2\theta_1 + L_1^2 \dot{\theta}_1^2 \sin^2\theta_1 \\
+&= L_1^2 \dot{\theta}_1^2
+\end{align*}
+
+\begin{align*}
+v_2^2 &= \dot{x}_2^2 + \dot{y}_2^2 \\
+&= (L_1 \dot{\theta}_1 \cos\theta_1 + L_2 \dot{\theta}_2 \cos\theta_2)^2 + (L_1 \dot{\theta}_1 \sin\theta_1 + L_2 \dot{\theta}_2 \sin\theta_2)^2 \\
+&= L_1^2 \dot{\theta}_1^2 \cos^2\theta_1 + 2L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \cos\theta_1 \cos\theta_2 + L_2^2 \dot{\theta}_2^2 \cos^2\theta_2 \\
+&\quad + L_1^2 \dot{\theta}_1^2 \sin^2\theta_1 + 2L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \sin\theta_1 \sin\theta_2 + L_2^2 \dot{\theta}_2^2 \sin^2\theta_2 \\
+&= L_1^2 \dot{\theta}_1^2 + L_2^2 \dot{\theta}_2^2 + 2L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 (\cos\theta_1 \cos\theta_2 + \sin\theta_1 \sin\theta_2) \\
+&= L_1^2 \dot{\theta}_1^2 + L_2^2 \dot{\theta}_2^2 + 2L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)
+\end{align*}
+
+\begin{align*}
+T &= \frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 \\
+&= \frac{1}{2} m_1 L_1^2 \dot{\theta}_1^2 + \frac{1}{2} m_2 \left[ L_1^2 \dot{\theta}_1^2 + L_2^2 \dot{\theta}_2^2 + 2L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2) \right] \\
+&= \frac{1}{2}(m_1 + m_2) L_1^2 \dot{\theta}_1^2 + \frac{1}{2} m_2 L_2^2 \dot{\theta}_2^2 + m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)
+\end{align*}
+
+\begin{align*}
+V &= -m_1 g y_1 - m_2 g y_2 \\
+&= -m_1 g L_1 \cos\theta_1 - m_2 g (L_1 \cos\theta_1 + L_2 \cos\theta_2) \\
+&= -(m_1 + m_2) g L_1 \cos\theta_1 - m_2 g L_2 \cos\theta_2
+\end{align*}
+
+\begin{align*}
+\mathcal{L} &= T - V \\
+&= \frac{1}{2}(m_1 + m_2) L_1^2 \dot{\theta}_1^2 + \frac{1}{2} m_2 L_2^2 \dot{\theta}_2^2 + m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2) \\
+&\quad + (m_1 + m_2) g L_1 \cos\theta_1 + m_2 g L_2 \cos\theta_2
+\end{align*}
+
+\[
+\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{q}_i}\right) - \frac{\partial \mathcal{L}}{\partial q_i} = 0
+\]
+\begin{align*}
+\delta &= \theta_1 - \theta_2
+\end{align*}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \dot{\theta}_1} &= (m_1 + m_2) L_1^2 \dot{\theta}_1 + m_2 L_1 L_2 \dot{\theta}_2 \cos\delta
+\end{align*}
+
+\begin{align*}
+\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{\theta}_1}\right) &= (m_1 + m_2) L_1^2 \ddot{\theta}_1 + m_2 L_1 L_2 \ddot{\theta}_2 \cos\delta - m_2 L_1 L_2 \dot{\theta}_2 (\dot{\theta}_1 - \dot{\theta}_2) \sin\delta
+\end{align*}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \theta_1} &= -m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \sin\delta - (m_1 + m_2) g L_1 \sin\theta_1
+\end{align*}
+
+\begin{align*}
+&(m_1 + m_2) L_1^2 \ddot{\theta}_1 + m_2 L_1 L_2 \ddot{\theta}_2 \cos\delta - m_2 L_1 L_2 \dot{\theta}_2 (\dot{\theta}_1 - \dot{\theta}_2) \sin\delta \\
+&\quad + m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \sin\delta + (m_1 + m_2) g L_1 \sin\theta_1 = 0
+\end{align*}
+
+\begin{align*}
+(m_1 + m_2) L_1 \ddot{\theta}_1 + m_2 L_2 \ddot{\theta}_2 \cos\delta + m_2 L_2 \dot{\theta}_2^2 \sin\delta + (m_1 + m_2) g \sin\theta_1 = 0
+\end{align*}
+
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \dot{\theta}_2} &= m_2 L_2^2 \dot{\theta}_2 + m_2 L_1 L_2 \dot{\theta}_1 \cos\delta
+\end{align*}
+
+\begin{align*}
+\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot{\theta}_2}\right) &= m_2 L_2^2 \ddot{\theta}_2 + m_2 L_1 L_2 \ddot{\theta}_1 \cos\delta + m_2 L_1 L_2 \dot{\theta}_1 (\dot{\theta}_1 - \dot{\theta}_2) \sin\delta
+\end{align*}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \theta_2} &= m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \sin\delta - m_2 g L_2 \sin\theta_2
+\end{align*}
+
+\begin{align*}
+&m_2 L_2^2 \ddot{\theta}_2 + m_2 L_1 L_2 \ddot{\theta}_1 \cos\delta + m_2 L_1 L_2 \dot{\theta}_1 (\dot{\theta}_1 - \dot{\theta}_2) \sin\delta \\
+&\quad - m_2 L_1 L_2 \dot{\theta}_1 \dot{\theta}_2 \sin\delta + m_2 g L_2 \sin\theta_2 = 0
+\end{align*}
+
+\begin{align*}
+m_2 L_2 \ddot{\theta}_2 + m_2 L_1 \ddot{\theta}_1 \cos\delta - m_2 L_1 \dot{\theta}_1^2 \sin\delta + m_2 g \sin\theta_2 = 0
+\end{align*}
+
+
+\[
+\begin{pmatrix}
+(m_1 + m_2) L_1 & m_2 L_2 \cos\delta \\
+m_2 L_1 \cos\delta & m_2 L_2
+\end{pmatrix}
+\begin{pmatrix}
+\ddot{\theta}_1 \\
+\ddot{\theta}_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+-m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 \\
+m_2 L_1 \dot{\theta}_1^2 \sin\delta - m_2 g \sin\theta_2
+\end{pmatrix}
+\]
+
+
+\begin{align*}
+D &= (m_1 + m_2) L_1 \cdot m_2 L_2 - m_2^2 L_1 L_2 \cos^2\delta \\
+&= m_2 L_1 L_2 \left[ (m_1 + m_2) - m_2 \cos^2\delta \right] \\
+&= m_2 L_1 L_2 \left[ m_1 + m_2 (1 - \cos^2\delta) \right] \\
+&= m_2 L_1 L_2 \left[ m_1 + m_2 \sin^2\delta \right]
+\end{align*}
+
+\[
+\sin^2\delta = \frac{1 - \cos 2\delta}{2}
+\]
+
+\[
+D = \frac{m_2 L_1 L_2}{2} \left( 2m_1 + m_2 - m_2 \cos 2\delta \right)
+\]
+
+
+\begin{align*}
+\ddot{\theta}_1 &= \frac{1}{D} \det \begin{pmatrix}
+-m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 & m_2 L_2 \cos\delta \\
+m_2 L_1 \dot{\theta}_1^2 \sin\delta - m_2 g \sin\theta_2 & m_2 L_2
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+&= \frac{1}{D} \Big[ \left( -m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 \right) (m_2 L_2) \\
+&\qquad\quad - (m_2 L_2 \cos\delta) \left( m_2 L_1 \dot{\theta}_1^2 \sin\delta - m_2 g \sin\theta_2 \right) \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{1}{D} \Big[ -m_2^2 L_2^2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) m_2 g L_2 \sin\theta_1 \\
+&\qquad\quad - m_2^2 L_1 L_2 \dot{\theta}_1^2 \sin\delta \cos\delta + m_2^2 g L_2 \cos\delta \sin\theta_2 \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{m_2 L_2}{D} \Big[ -m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 - m_2 L_1 \dot{\theta}_1^2 \sin\delta \cos\delta + m_2 g \cos\delta \sin\theta_2 \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{2}{L_1(2m_1 + m_2 - m_2 \cos 2\delta)} \Big[ -m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 \\
+&\qquad\qquad\qquad\qquad\qquad\qquad\quad - m_2 L_1 \dot{\theta}_1^2 \sin\delta \cos\delta + m_2 g \cos\delta \sin\theta_2 \Big]
+\end{align*}
+
+\[
+\cos\delta \sin\theta_2 = \cos(\theta_1 - \theta_2)\sin\theta_2 = \frac{1}{2}\left[ \sin\theta_1 + \sin(2\theta_2 - \theta_1) \right]
+\]
+
+\[
+\sin\theta_1 - \frac{1}{2}\sin\theta_1 - \frac{1}{2}\sin(2\theta_2 - \theta_1) = \frac{1}{2}\sin\theta_1 - \frac{1}{2}\sin(2\theta_2 - \theta_1) = -\frac{1}{2}\left[ \sin(\theta_1 - 2\theta_2) + \sin\theta_1 \right]
+\]
+
+\[
+\ddot{\theta}_1 = \frac{-g(2m_1 + m_2)\sin\theta_1 - m_2 g \sin(\theta_1 - 2\theta_2) - 2\sin\delta \cdot m_2(\dot{\theta}_2^2 L_2 + \dot{\theta}_1^2 L_1 \cos\delta)}{L_1(2m_1 + m_2 - m_2\cos 2\delta)}
+\]
+
+
+\begin{align*}
+\ddot{\theta}_2 &= \frac{1}{D} \det \begin{pmatrix}
+(m_1 + m_2) L_1 & -m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 \\
+m_2 L_1 \cos\delta & m_2 L_1 \dot{\theta}_1^2 \sin\delta - m_2 g \sin\theta_2
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+&= \frac{1}{D} \Big[ (m_1 + m_2) L_1 \left( m_2 L_1 \dot{\theta}_1^2 \sin\delta - m_2 g \sin\theta_2 \right) \\
+&\qquad\quad - (m_2 L_1 \cos\delta) \left( -m_2 L_2 \dot{\theta}_2^2 \sin\delta - (m_1 + m_2) g \sin\theta_1 \right) \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{1}{D} \Big[ (m_1 + m_2) m_2 L_1^2 \dot{\theta}_1^2 \sin\delta - (m_1 + m_2) m_2 g L_1 \sin\theta_2 \\
+&\qquad\quad + m_2^2 L_1 L_2 \dot{\theta}_2^2 \sin\delta \cos\delta + (m_1 + m_2) m_2 g L_1 \cos\delta \sin\theta_1 \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{m_2 L_1}{D} \Big[ (m_1 + m_2) L_1 \dot{\theta}_1^2 \sin\delta - (m_1 + m_2) g \sin\theta_2 \\
+&\qquad\qquad + m_2 L_2 \dot{\theta}_2^2 \sin\delta \cos\delta + (m_1 + m_2) g \cos\delta \sin\theta_1 \Big]
+\end{align*}
+
+\begin{align*}
+&= \frac{2}{L_2(2m_1 + m_2 - m_2 \cos 2\delta)} \Big[ (m_1 + m_2) L_1 \dot{\theta}_1^2 \sin\delta + m_2 L_2 \dot{\theta}_2^2 \sin\delta \cos\delta \\
+&\qquad\qquad\qquad\qquad\qquad\qquad\quad + (m_1 + m_2) g (\cos\delta \sin\theta_1 - \sin\theta_2) \Big]
+\end{align*}
+
+\[
+\cos\delta \sin\theta_1 - \sin\theta_2 = \cos(\theta_1 - \theta_2)\sin\theta_1 - \sin\theta_2 = \sin\delta \cos\theta_1
+\]
+
+\[
+\ddot{\theta}_2 = \frac{2\sin\delta \left[ \dot{\theta}_1^2 L_1 (m_1 + m_2) + g(m_1 + m_2)\cos\theta_1 + \dot{\theta}_2^2 L_2 m_2 \cos\delta \right]}{L_2(2m_1 + m_2 - m_2\cos 2\delta)}
+\]
+
+\end{document}
